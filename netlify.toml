@@ -1,0 +1,8 @@
+# Tells Netlify how to build this Next.js site.
+# Netlify adds its Next.js runtime automatically, which also runs the contact-form API route.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
