@@ -6,3 +6,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# Netlify's Next.js runtime: turns pages into a site and the contact-form route into a function
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
