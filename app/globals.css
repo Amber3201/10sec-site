@@ -454,3 +454,34 @@ h1,h2,h3{line-height:1.15}
 .card:hover .ic .on{animation:none}
 .logo .rec,.node.live.on{animation:none}
 }
+
+/* ---------- Lab work (concept portfolio) ---------- */
+.sec-tight{padding-top:0}
+.wk-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.wk{height:100%;display:flex;flex-direction:column;text-decoration:none;color:var(--b)}
+.wk-frame{border:1px solid #2A2A2A;background:#111;transition:border-color .2s steps(2)}
+.wk:hover .wk-frame,.wk:focus-visible .wk-frame,.wk.play .wk-frame{border-color:var(--y)}
+.wk-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid #2A2A2A;color:var(--a);font-size:11px}
+.wk-bar .rec{display:inline-block;width:7px;height:7px;border-radius:50%;background:#3A3A3A;margin-right:8px;vertical-align:1px;transition:background .2s}
+.wk.play .wk-bar .rec{background:#FF3B30;animation:recb 1s steps(2) infinite}
+.wk.play .wk-bar{color:var(--b)}
+.wk-tc{font-variant-numeric:tabular-nums}
+@keyframes recb{50%{opacity:.25}}
+.wk-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0D0D0D}
+.wk-media img,.wk-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .35s ease}
+.wk-media video{opacity:0}
+.wk.play .wk-media video{opacity:1}
+.wk:hover .wk-media img,.wk:hover .wk-media video{transform:scale(1.015)}
+.wk-hint{position:absolute;right:12px;bottom:12px;padding:6px 10px;background:rgba(10,10,10,.82);color:var(--b);font-size:10px;border:1px solid #2A2A2A;transition:opacity .25s}
+.wk.play .wk-hint{opacity:0}
+.wk-meta{padding-top:24px;display:flex;flex-direction:column;flex:1}
+.wk-k{color:var(--y);margin:0 0 10px}
+.wk-meta h3{font-weight:600;font-size:30px;line-height:1.1;letter-spacing:-.02em;margin:0 0 12px}
+.wk-d{color:#B3AFA6;font-size:16px;margin:0 0 20px;max-width:52ch}
+.wk-tags{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.wk-tags li{border:1px solid #2F2F2F;color:#B3AFA6;padding:6px 10px;font-size:10.5px}
+.wk .more{padding-top:24px}
+.wk:hover .more{text-decoration:underline;text-underline-offset:4px}
+.wk-note{color:var(--a2);margin:48px 0 0;font-size:11px}
+@media (max-width:900px){.wk-grid{grid-template-columns:1fr;gap:56px}.wk-hint{display:none}}
+@media (prefers-reduced-motion:reduce){.wk-media img,.wk-media video{transition:none}.wk:hover .wk-media img{transform:none}}

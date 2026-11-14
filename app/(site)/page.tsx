@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { PixelIcon, PostCard, SectionHead } from '@/components/blocks';
 import { ContactSection } from '@/components/contact';
 import { DitherCanvas, Faq, Seam, Timeline } from '@/components/effects';
+import { WorkGrid, type Concept } from '@/components/work';
 import { faqs, site } from '@/lib/content';
 import { B, K, Y } from '@/lib/dither';
 import { getPublishedPosts } from '@/lib/posts';
@@ -12,6 +13,11 @@ const cards = [
   { href: '/website-design', icon: 'monitor' as const, label: 'Website Design', title: 'Websites that hook in seconds.', desc: 'Fast, clear, conversion-first sites with a look people remember, built to load before attention runs out.', ticks: ['Strategy, UX and UI design', 'Next.js, Webflow or Framer builds', 'SEO-ready and easy to edit'], more: 'Explore Website Design' },
   { href: '/social-media', icon: 'heart' as const, label: 'Social Media Marketing', title: 'Content that stops the thumb.', desc: 'Strategy, content and campaigns made for the feed, where the first frame decides everything.', ticks: ['Content strategy and calendars', 'Reels, carousels and short-form video', 'Community and paid social'], more: 'Explore Social Media' },
   { href: '/seo-aeo', icon: 'search' as const, label: 'SEO + AEO', title: 'Found on Google. Cited by AI.', desc: 'SEO gets you ranked. AEO gets your brand cited in AI answers on ChatGPT, Perplexity and Google AI Overviews.', ticks: ['Technical SEO and site audits', 'Content built for real questions', 'Schema and AI answer visibility'], more: 'Explore SEO / AEO' },
+];
+
+const concepts: Concept[] = [
+  { slug: 'northfold', num: '01', name: 'Northfold', niche: 'Digital marketing agency', desc: 'A showreel that unfolds out of the hero, service cards that tilt into place and a statement that lights up as you read it.', tags: ['Scroll-driven motion', 'Editorial type', 'Showreel reveal'] },
+  { slug: 'vernier', num: '02', name: 'VERNIER', niche: 'Independent watchmaker', desc: 'A 3D watch that turns into a blueprint as you scroll, comes apart and labels all nine of its parts, then clicks back together.', tags: ['Interactive 3D', 'Blueprint scroll', 'Engineering grid'] },
 ];
 
 export default async function Home() {
@@ -69,9 +75,16 @@ export default async function Home() {
 
       <Seam a={B} b={K} />
 
-      <section className="sec" id="process">
+      <section className="sec" id="work">
+        <div className="wrap">
+          <SectionHead kicker="02 — Lab work" title={'No clients yet, so we invented\u00a0two.'} lead="Two self-initiated concept sites, each with its own brand, type and motion. Every card plays a scroll-through. Open one to try it live." />
+          <WorkGrid items={concepts} />
+        </div>
+      </section>
+
+      <section className="sec sec-tight" id="process">
         <div className="wrap proc">
-          <SectionHead kicker="02 — Process" title="From brief to live, in five moves." lead="The same rhythm runs through every service, so you always know what happens next." />
+          <SectionHead kicker="03 — Process" title="From brief to live, in five moves." lead="The same rhythm runs through every service, so you always know what happens next." />
           <Timeline steps={[
             { title: 'Brief', text: 'One call to pin down your goals, audience and what success looks like.' },
             { title: 'Plan', text: 'A clear scope, timeline and fixed quote before any work begins.' },
@@ -87,7 +100,7 @@ export default async function Home() {
       {posts.length > 0 && (
         <section className="sec light" id="blog">
           <div className="wrap">
-            <SectionHead kicker="03 — From the blog" title="Notes on the first 10 seconds.">
+            <SectionHead kicker="04 — From the blog" title="Notes on the first 10 seconds.">
               <Link href="/blog" className="textlink">All posts →</Link>
             </SectionHead>
             <div className="posts">{posts.map((p, i) => <PostCard key={p.id} post={p} index={i} />)}</div>
@@ -95,9 +108,9 @@ export default async function Home() {
         </section>
       )}
 
-      <Faq items={faqs.home} kicker="04 — FAQ" title="Quick answers." padTop={posts.length > 0} />
+      <Faq items={faqs.home} kicker="05 — FAQ" title="Quick answers." padTop={posts.length > 0} />
       <Seam a={B} b={Y} />
-      <ContactSection kicker="05 — Contact" title="Got 10 seconds? Tell us your idea." sub="Share a few lines about your project. We reply within one business day." />
+      <ContactSection kicker="06 — Contact" title="Got 10 seconds? Tell us your idea." sub="Share a few lines about your project. We reply within one business day." />
       <Seam a={Y} b={K} />
     </>
   );
