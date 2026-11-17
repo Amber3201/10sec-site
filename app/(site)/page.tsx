@@ -6,6 +6,14 @@ import { WorkGrid, type Concept } from '@/components/work';
 import { faqs, site } from '@/lib/content';
 import { B, K, Y } from '@/lib/dither';
 import { getPublishedPosts } from '@/lib/posts';
+import { ORG_LD, pageMeta } from '@/lib/seo';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = pageMeta({
+  title: 'Your website should explain you before you do | 10sec',
+  description: '10sec is a creative agency for website design, social media marketing and SEO + AEO. We build websites people understand in their first 10 seconds.',
+  path: '',
+});
 
 export const revalidate = 60;
 
@@ -23,9 +31,18 @@ const concepts: Concept[] = [
 export default async function Home() {
   const posts = (await getPublishedPosts()).slice(0, 3);
   const jsonLd = {
-    '@context': 'https://schema.org', '@type': 'Organization', name: '10sec', url: site.url,
-    description: 'Creative agency for website design, social media marketing and SEO / AEO.',
-    ...(site.email ? { email: site.email } : {}), sameAs: site.socials.map((s) => s.href),
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        ...ORG_LD, '@type': ['Organization', 'ProfessionalService'],
+        description: 'Creative agency for website design, social media marketing and SEO + AEO.',
+        slogan: 'Your website should explain you before you do.',
+        founder: { '@type': 'Person', name: 'Amber Kujur' }, areaServed: 'Worldwide',
+        ...(site.email ? { email: site.email } : {}),
+        ...(site.socials.length ? { sameAs: site.socials.map((s) => s.href) } : {}),
+      },
+      { '@type': 'WebSite', '@id': `${site.url}/#website`, url: site.url, name: '10sec', publisher: { '@id': ORG_LD['@id'] }, inLanguage: 'en' },
+    ],
   };
   return (
     <>

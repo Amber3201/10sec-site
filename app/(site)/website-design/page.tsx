@@ -3,19 +3,27 @@ import { Deliverables, Packages, SectionHead } from '@/components/blocks';
 import { ContactSection } from '@/components/contact';
 import { DitherCanvas, Faq, Seam, TenSecondBar } from '@/components/effects';
 import { faqs } from '@/lib/content';
+import { getPublishedPosts } from '@/lib/posts';
+import { pageMeta } from '@/lib/seo';
+import { Breadcrumbs, RelatedReading } from '@/components/seo';
 import { B, K, Y } from '@/lib/dither';
 
-export const metadata: Metadata = {
-  title: 'Website Design',
-  description: 'Fast, clear, conversion-focused websites built for the first 10 seconds. Strategy, UX, UI, copy, development and SEO foundations.',
-};
+export const metadata: Metadata = pageMeta({
+  title: 'Website Design Services: Fast, Clear Websites | 10sec',
+  description: 'Website design that explains your business in 10 seconds: strategy, UX and UI, copy, development and SEO foundations on Next.js, Webflow or Framer.',
+  path: '/website-design',
+});
 
-export default function WebsiteDesign() {
+export const revalidate = 60;
+
+export default async function WebsiteDesign() {
+  const posts = await getPublishedPosts();
   return (
     <>
       <section className="bp" id="top">
         <div className="wrap svc-grid">
           <div>
+            <Breadcrumbs items={[{ name: 'Website Design', path: '/website-design' }]} />
             <p className="kicker label hero-k rise" data-rv="1">Service 01 — Website Design</p>
             <h1 className="h1s rise d1" data-rv="1">Websites built for the <span className="hl">first 10 seconds.</span></h1>
             <p className="lede rise d2" data-rv="1">Visitors decide almost instantly whether to stay. We design and build fast, clear, conversion-focused websites that answer three questions before anyone scrolls: what you do, why it matters and what to do next.</p>
@@ -87,6 +95,8 @@ export default function WebsiteDesign() {
           <Packages service="web" />
         </div>
       </section>
+
+      <RelatedReading service="web" posts={posts} />
 
       <Faq items={faqs.web} kicker="FAQ" title="Website questions." padTop />
       <Seam a={B} b={Y} />
