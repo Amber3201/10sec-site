@@ -4,11 +4,13 @@ export const site = {
   name: '10sec',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://10sec.example',
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || '',
+  // Real profile URLs only. Set them in Netlify env vars; a link is hidden until its URL is set,
+  // so the site never links to a bare platform homepage.
   socials: [
-    { label: 'Instagram', href: 'https://instagram.com' },
-    { label: 'LinkedIn', href: 'https://linkedin.com' },
-    { label: 'X', href: 'https://x.com' },
-  ],
+    { label: 'Instagram', href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || '' },
+    { label: 'LinkedIn', href: process.env.NEXT_PUBLIC_LINKEDIN_URL || '' },
+    { label: 'X', href: process.env.NEXT_PUBLIC_X_URL || '' },
+  ].filter((s) => s.href),
 };
 
 export type ServiceKey = 'web' | 'social' | 'search';

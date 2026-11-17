@@ -3,12 +3,16 @@ import { Deliverables, Packages, SectionHead } from '@/components/blocks';
 import { ContactSection } from '@/components/contact';
 import { DitherCanvas, Faq, Seam } from '@/components/effects';
 import { faqs } from '@/lib/content';
+import { getPublishedPosts } from '@/lib/posts';
+import { pageMeta } from '@/lib/seo';
+import { Breadcrumbs, RelatedReading } from '@/components/seo';
 import { B, K, Y } from '@/lib/dither';
 
-export const metadata: Metadata = {
-  title: 'Social Media Marketing',
-  description: 'Social content that stops the scroll: strategy, short-form video, carousels, community management, paid social and reporting.',
-};
+export const metadata: Metadata = pageMeta({
+  title: 'Social Media Marketing: Reels, Carousels, Strategy | 10sec',
+  description: 'Social media marketing that stops the scroll: brand-first strategy, Reels and short-form video, carousels, community management and paid social.',
+  path: '/social-media',
+});
 
 const formats = [
   { tag: 'Reels / Shorts', title: 'Short-form video', text: 'Scripted, shot and edited vertical video with captions and on-screen hooks.', fn: 'ripple' as const },
@@ -17,12 +21,16 @@ const formats = [
   { tag: 'Paid ads', title: 'Paid social', text: 'Ad creative and targeting that reach new people, measured against real goals.', fn: 'bars' as const },
 ];
 
-export default function SocialMedia() {
+export const revalidate = 60;
+
+export default async function SocialMedia() {
+  const posts = await getPublishedPosts();
   return (
     <>
       <section className="light" id="top">
         <div className="wrap svc-grid">
           <div>
+            <Breadcrumbs items={[{ name: 'Social Media Marketing', path: '/social-media' }]} />
             <p className="kicker label hero-k rise" data-rv="1">Service 02 — Social Media Marketing</p>
             <h1 className="h1s rise d1" data-rv="1">Content that <span className="hl">stops the scroll.</span></h1>
             <p className="lede rise d2" data-rv="1">On social, you get about a second to earn the next nine. We plan, create and run content that hooks fast, builds a following and turns attention into enquiries.</p>
@@ -90,6 +98,8 @@ export default function SocialMedia() {
           <Packages service="social" />
         </div>
       </section>
+
+      <RelatedReading service="social" posts={posts} />
 
       <Faq items={faqs.social} kicker="FAQ" title="Social questions." padTop />
       <Seam a={B} b={Y} />

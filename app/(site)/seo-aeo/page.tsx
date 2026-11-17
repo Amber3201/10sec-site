@@ -3,14 +3,21 @@ import { Deliverables, Packages, SectionHead } from '@/components/blocks';
 import { ContactSection } from '@/components/contact';
 import { DitherCanvas, Faq, Seam } from '@/components/effects';
 import { faqs } from '@/lib/content';
+import { getPublishedPosts } from '@/lib/posts';
+import { pageMeta } from '@/lib/seo';
+import { Breadcrumbs, RelatedReading } from '@/components/seo';
 import { B, C, K, Y } from '@/lib/dither';
 
-export const metadata: Metadata = {
-  title: 'SEO + AEO',
-  description: 'Get found on Google and cited by AI assistants like ChatGPT, Perplexity and Google AI Overviews. Technical SEO, content, schema and AI visibility tracking.',
-};
+export const metadata: Metadata = pageMeta({
+  title: 'SEO + AEO Services: Rank on Google, Get Cited by AI | 10sec',
+  description: 'SEO and AEO that get you found on Google and cited by ChatGPT, Perplexity and AI Overviews: technical SEO, content, schema and AI visibility.',
+  path: '/seo-aeo',
+});
 
-export default function SeoAeo() {
+export const revalidate = 60;
+
+export default async function SeoAeo() {
+  const posts = await getPublishedPosts();
   const faqLd = {
     '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: faqs.search.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
@@ -21,6 +28,7 @@ export default function SeoAeo() {
       <section id="top">
         <div className="wrap svc-grid">
           <div>
+            <Breadcrumbs items={[{ name: 'SEO + AEO', path: '/seo-aeo' }]} />
             <p className="kicker label hero-k rise" data-rv="1">Service 03 — SEO + AEO</p>
             <h1 className="h1s rise d1" data-rv="1">Found on Google. <span className="hl">Cited by AI.</span></h1>
             <p className="lede rise d2" data-rv="1">People don&apos;t only search anymore. They ask. We make your business easy to find in Google results, and easy for AI assistants like ChatGPT, Perplexity and Google AI Overviews to trust and cite.</p>
@@ -119,6 +127,8 @@ export default function SeoAeo() {
           <Packages service="search" />
         </div>
       </section>
+
+      <RelatedReading service="search" posts={posts} />
 
       <Faq items={faqs.search} kicker="FAQ" title="Search questions." padTop />
       <Seam a={B} b={Y} />
