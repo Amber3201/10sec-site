@@ -24,6 +24,14 @@ export function PixelLogo({ progress = 1, className = '' }: { progress?: number;
   );
 }
 
+const AI_Q = 'Read https://10sec.space and summarise what 10sec does, who it is for and how to work with them.';
+const AI = [
+  { n: 'ChatGPT', h: 'https://chatgpt.com/?q=' },
+  { n: 'Claude', h: 'https://claude.ai/new?q=' },
+  { n: 'Perplexity', h: 'https://www.perplexity.ai/search?q=' },
+  { n: 'Gemini', h: 'https://www.google.com/search?udm=50&q=' },
+];
+
 const NAV = [
   { href: '/website-design', label: 'Website Design' },
   { href: '/social-media', label: 'Social Media' },
@@ -79,6 +87,10 @@ export function Footer() {
     <footer className="foot">
       <div className="wrap">
         <div ref={ref} role="img" aria-label="10sec"><PixelLogo progress={t} className="foot-logo" /></div>
+        <div className="foot-mid">
+          <div><p className="label foot-k">Ask AI about 10sec</p><div className="ai-chips">{AI.map((a) => <a key={a.n} className="label" href={a.h + encodeURIComponent(AI_Q)} target="_blank" rel="noopener noreferrer"><span aria-hidden="true" />{a.n}</a>)}</div></div>
+          <div><p className="label foot-k">Who we help</p><p className="foot-who">Clinics · D2C brands · Real estate · Coaching · IT &amp; software</p></div>
+        </div>
         <div className="foot-row">
           <nav className="foot-links" aria-label="Footer">
             <Link href="/">Home</Link>
