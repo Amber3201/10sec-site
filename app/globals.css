@@ -483,5 +483,11 @@ h1,h2,h3{line-height:1.15}
 .wk .more{padding-top:24px}
 .wk:hover .more{text-decoration:underline;text-underline-offset:4px}
 .wk-note{color:var(--a2);margin:48px 0 0;font-size:11px}
-@media (max-width:900px){.wk-grid{grid-template-columns:1fr;gap:56px}.wk-hint{display:none}}
+/* featured client card: full width, media beside the text */
+.wk-feat{grid-column:1/-1}
+.wk-feat .wk{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;align-items:center}
+.wk-feat .wk-meta{padding-top:0}
+.wk-feat .wk-meta h3{font-size:40px}
+.wk-feat .wk-k::before{content:"";display:inline-block;width:7px;height:7px;background:var(--y);margin-right:10px;vertical-align:1px}
+@media (max-width:900px){.wk-grid{grid-template-columns:1fr;gap:56px}.wk-hint{display:none}.wk-feat .wk{display:flex;gap:0;align-items:stretch}.wk-feat .wk-meta{padding-top:24px}.wk-feat .wk-meta h3{font-size:30px}}
 @media (prefers-reduced-motion:reduce){.wk-media img,.wk-media video{transition:none}.wk:hover .wk-media img{transform:none}}
