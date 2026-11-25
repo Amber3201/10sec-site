@@ -9,6 +9,9 @@ export type Concept = {
   niche: string;
   desc: string;
   tags: string[];
+  /** Real client work: links to the live site instead of a concept page. */
+  client?: boolean;
+  href?: string;
 };
 
 function tc(s: number) {
@@ -60,9 +63,10 @@ function WorkCard({ c, i }: { c: Concept; i: number }) {
     return () => io.disconnect();
   }, []);
 
-  const href = `/concepts/${c.slug}.html`;
+  const href = c.href ?? `/concepts/${c.slug}.html`;
+  const kind = c.client ? 'Client' : 'Concept';
   return (
-    <div className={`rise${i ? ` d${i}` : ''}`} data-rv="1">
+    <div className={`rise${i ? ` d${i}` : ''}${c.client ? ' wk-feat' : ''}`} data-rv="1">
     <a
       ref={card}
       href={href}
@@ -76,22 +80,22 @@ function WorkCard({ c, i }: { c: Concept; i: number }) {
     >
       <div className="wk-frame">
         <div className="wk-bar label">
-          <span><i className="rec" aria-hidden="true" />{on ? 'Rec' : 'Concept'} {c.num}</span>
+          <span><i className="rec" aria-hidden="true" />{on ? 'Rec' : kind} {c.num}</span>
           <span className="wk-tc">{tc(time)}</span>
         </div>
         <div className="wk-media">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`/work/${c.slug}-poster.webp`} alt={`${c.name} concept website, first screen`} width={1280} height={800} loading="lazy" />
+          <img src={`/work/${c.slug}-poster.webp`} alt={c.client ? `${c.name} website by 10sec, first screen` : `${c.name} concept website, first screen`} width={1280} height={800} loading="lazy" />
           <video ref={vid} src={`/work/${c.slug}-scroll.mp4`} muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1} />
           <span className="wk-hint label" aria-hidden="true">Hover to scroll</span>
         </div>
       </div>
       <div className="wk-meta">
-        <p className="label wk-k">Concept {c.num} · {c.niche}</p>
+        <p className="label wk-k">{kind} {c.num} · {c.niche}</p>
         <h3>{c.name}</h3>
         <p className="wk-d">{c.desc}</p>
         <ul className="wk-tags">{c.tags.map((t) => <li key={t} className="label">{t}</li>)}</ul>
-        <span className="more">View live concept ↗</span>
+        <span className="more">{c.client ? 'Visit the live site ↗' : 'View live concept ↗'}</span>
       </div>
     </a>
     </div>
@@ -102,7 +106,7 @@ export function WorkGrid({ items }: { items: Concept[] }) {
   return (
     <>
       <div className="wk-grid">{items.map((c, i) => <WorkCard key={c.slug} c={c} i={i} />)}</div>
-      <p className="wk-note label">Self-initiated concepts. The brands are fictional and no client work is shown.</p>
+      <p className="wk-note label">Concepts are self-initiated. Their brands are fictional.</p>
     </>
   );
 }

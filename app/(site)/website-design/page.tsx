@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { Deliverables, Packages, SectionHead } from '@/components/blocks';
 import { ContactSection } from '@/components/contact';
 import { DitherCanvas, Faq, Seam, TenSecondBar } from '@/components/effects';
+import { WorkGrid } from '@/components/work';
 import { faqs } from '@/lib/content';
+import { concepts } from '@/lib/work';
 import { B, K, Y } from '@/lib/dither';
 
 export const metadata: Metadata = {
@@ -76,6 +78,13 @@ export default function WebsiteDesign() {
               <li key={h} className={`rise${i ? ` d${Math.min(i, 3)}` : ''}`} data-rv="1"><span className="label">{String(i + 1).padStart(2, '0')}</span><h3>{h}</h3><p>{p}</p></li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="sec" id="work">
+        <div className="wrap">
+          <SectionHead kicker="Portfolio" title="Sites we've built." lead="Our first client site is live, alongside two self-initiated concepts. Hover a card to watch it scroll, or open it to try it yourself." />
+          <WorkGrid items={concepts} />
         </div>
       </section>
 
