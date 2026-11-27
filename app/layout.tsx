@@ -7,8 +7,8 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: '10sec — Websites, social and search that land in 10 seconds', template: '%s — 10sec' },
-  description: '10sec is a creative agency for website design, social media marketing and SEO / AEO. We make the first ten seconds count.',
+  title: { default: '10sec — Your website should explain you before you do', template: '%s — 10sec' },
+  description: '10sec designs websites for B2B companies that buyers understand in 10 seconds, plus SEO, AEO and social media that bring the right people to them.',
   openGraph: { siteName: '10sec', type: 'website' },
 };
 

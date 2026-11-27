@@ -57,8 +57,8 @@ export type Faq = { q: string; a: string };
 
 export const faqs: Record<'home' | ServiceKey, Faq[]> = {
   home: [
-    { q: 'What does 10sec do?', a: '10sec is a creative agency in India that designs websites, runs social media and handles SEO and AEO for small businesses and D2C brands. Pick one service or bundle all three into a single growth plan.' },
-    { q: 'Who is 10sec for?', a: 'Small businesses, D2C brands and founders whose website looks fine but does not bring enquiries, or who want to be found on Google and in AI answers.' },
+    { q: 'What does 10sec do?', a: '10sec is a creative agency in India that designs websites, runs social media and handles SEO and AEO for B2B companies. Pick one service or bundle all three into a single growth plan.' },
+    { q: 'Who is 10sec for?', a: 'B2B companies and founders whose website looks fine but does not bring enquiries, or who want buyers to find them on Google and in AI answers.' },
     { q: 'How long does a website take?', a: 'It depends on scope: a landing page is quicker than a full business site. You get a timeline together with your fixed quote, before any work begins.' },
     { q: 'What is AEO?', a: 'Answer engine optimization: structuring your site and content so AI assistants like ChatGPT, Perplexity and Google AI Overviews can find, trust and cite your brand in their answers.' },
     { q: 'How is pricing set?', a: 'Every project is quoted after a short call, based on what you need. You get a fixed quote before any work begins, with no surprises later.' },

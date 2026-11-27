@@ -89,7 +89,7 @@ export function Footer() {
         <div ref={ref} role="img" aria-label="10sec"><PixelLogo progress={t} className="foot-logo" /></div>
         <div className="foot-mid">
           <div><p className="label foot-k">Ask AI about 10sec</p><div className="ai-chips">{AI.map((a) => <a key={a.n} className="label" href={a.h + encodeURIComponent(AI_Q)} target="_blank" rel="noopener noreferrer"><span aria-hidden="true" />{a.n}</a>)}</div></div>
-          <div><p className="label foot-k">Who we help</p><p className="foot-who">Clinics · D2C brands · Real estate · Coaching · IT &amp; software</p></div>
+          <div><p className="label foot-k">Who we help</p><p className="foot-who">IT &amp; software · SaaS · Consulting · Professional services · Industrial B2B</p></div>
         </div>
         <div className="foot-row">
           <nav className="foot-links" aria-label="Footer">

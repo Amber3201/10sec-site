@@ -40,7 +40,7 @@ export default async function Home() {
           <div>
             <p className="eyebrow label rise" data-rv="1"><span className="dot" aria-hidden="true" />Creative agency — Web · Social · Search</p>
             <h1 className="h1 h1-home rise d1" data-rv="1">Your website should explain you <span className="hl">before you do.</span></h1>
-            <p className="lede rise d2" data-rv="1">10sec designs websites for small businesses and D2C brands that visitors get in 10 seconds, then brings the right people to them through Instagram, Google and AI search.</p>
+            <p className="lede rise d2" data-rv="1">10sec designs websites for B2B companies that buyers understand in 10 seconds, then brings the right people to them through Google, AI answers and social.</p>
             <div className="ctas rise d3" data-rv="1">
               <a href="#contact" className="btn btn-y btn-lg"><span>Start a project →</span></a>
               <a href="#services" className="btn btn-o btn-lg"><span>Explore services</span></a>
@@ -78,7 +78,6 @@ export default async function Home() {
             ))}
           </div>
           <div className="founder rise" data-rv="1">
-            <div className="founder-ph label" aria-hidden="true">Amber&apos;s<br />photo</div>
             <div className="founder-tx"><h3>You talk to the person who builds it.</h3><p>Amber Kujur, founder. One point of contact from the first call to launch, and after.</p></div>
             <a href="https://calendly.com/amber-10sec/30min" className="btn btn-k btn-lg"><span>Book a free 30-min call →</span></a>
           </div>
@@ -109,10 +108,10 @@ export default async function Home() {
 
       <section className="sec sec-tight" id="experiment">
         <div className="wrap">
-          <SectionHead kicker="04 — Experiment #01" title="Can a stranger tell what you do in 10 seconds?" lead="Visitors decide whether to stay in about the first 10 seconds (Nielsen Norman Group). Dr. Sec ran the same clinic through two headlines." />
+          <SectionHead kicker="04 — Experiment #01" title="Can a stranger tell what you do in 10 seconds?" lead="Visitors decide whether to stay in about the first 10 seconds (Nielsen Norman Group). Dr. Sec ran the same B2B software company through two headlines." />
           <div className="serp">
-            <div className="panel"><p className="label xp-top"><span>Take A</span><span><i className="rec-sq" aria-hidden="true" />REC 00:10</span></p><p className="xp-h dim">Your smile, our passion.</p><p className="label xp-v">Verdict: stranger left. No idea what this is.</p></div>
-            <div className="panel pass"><p className="label xp-top"><span>Take B</span><span><i className="rec-sq" aria-hidden="true" />REC 00:04</span></p><p className="xp-h">Painless dental care in Patia. Same-week appointments.</p><p className="label xp-v">Verdict: understood in 4 seconds.</p></div>
+            <div className="panel"><p className="label xp-top"><span>Take A</span><span><i className="rec-sq" aria-hidden="true" />REC 00:10</span></p><p className="xp-h dim">Empowering businesses through innovation.</p><p className="label xp-v">Verdict: stranger left. No idea what this is.</p></div>
+            <div className="panel pass"><p className="label xp-top"><span>Take B</span><span><i className="rec-sq" aria-hidden="true" />REC 00:04</span></p><p className="xp-h">Payroll software for Indian manufacturers. GST-ready, live in a week.</p><p className="label xp-v">Verdict: understood in 4 seconds.</p></div>
           </div>
           <div className="xp-cta"><p>Want yours tested? Comment <span className="label" style={{ color: 'var(--y)' }}>TEST</span> on Instagram, or send us your link.</p><a href="#contact" className="btn btn-y btn-lg"><span>Test my website →</span></a></div>
           <p className="label xp-note">Illustrative example, not a client. Source: J. Nielsen, “How Long Do Users Stay on Web Pages?”, NN/g, 2011.</p>
