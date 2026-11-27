@@ -87,6 +87,7 @@ export function PostCard({ post, index, featured }: { post: Post; index: number;
         <p className="pc-meta label">{featured && <span>Latest</span>}<span>{CATEGORY_LABEL[post.category]}</span><span>{featured ? formatDate(post.published_at) : readTime(post.body)}</span></p>
         {featured ? <h2 className="pc-title">{post.title}</h2> : <h3 className="pc-title">{post.title}</h3>}
         <p className="pc-ex">{post.excerpt}</p>
+        <p className="pc-by label"><span aria-hidden="true" />Amber Kujur · Founder</p>
       </div>
     </Link>
   );
